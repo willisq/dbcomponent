@@ -1,0 +1,34 @@
+{
+  "name": "dbcomponent",
+  "version": "0.1.0",
+  "description": "A pg node wraper to execute sql sentences.",
+  "main": "index.js",
+  "scripts": {
+    "doc": "jsdoc -c jsdoc.json"
+  },
+  "keywords": [
+    "postgres",
+    "database"
+  ],
+  "contributors": [
+    {
+      "name": "Jubert Perez",
+      "email": "jubertperez@gmail.com"
+    },
+    {
+      "name": "William Suarez",
+      "email": "williamsuarezdev@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/willisq/dbcomponent.git"
+  },
+  "homepage": "https://github.com/willisq/dbcomponent.git#readme",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.9",
+    "jsdoc": "^4.0.2",
+    "pg": "^8.11.1"
+  }
+}
