@@ -1,3 +1,4 @@
+const { Pool } = require("pg");
 
 /**
  * @author Jubert Perez <jubertperez@gmail.com>
@@ -6,7 +7,8 @@
  */
 class DbComponent {
   constructor(options) {
-    const { Pool } = require("pg");
+    this.sentences = null;
+    this.sharedSentences = null;
     this.pool = new Pool(options);
   }
 
@@ -30,6 +32,16 @@ class DbComponent {
     return this;
   }
 
+   /**
+  * @description Sets the shared json with sql queries
+  * @param {JSON} jsonSentences - Shared JSON with sql sentences   
+  * @returns {DbComponent} this object
+  */
+  setSharedSentences(jsonSentences){
+    this.sharedSentences = jsonSentences;
+    return this;
+  }
+
   /**
   * @description Sets the json with sql queries
   * @param {JSON} jsonSentences - JSON with sql sentences   
@@ -48,8 +60,7 @@ class DbComponent {
   * @returns {Promise<object>}  A promise that contains the result set object when fulfilled.
   */
   async execute(idSentence, params = []) {
-    try { return await this.pool.query(this.getSentence(idSentence), params); }
-    catch (e) { return await Promise.reject(e); }
+    return await this.pool.query(this.getSentence(idSentence), params);
   }
 
   /**
@@ -58,7 +69,9 @@ class DbComponent {
   * @returns {string} sql sentence whitin sentences JSON or a empty string if the sentences doesn't exists.
   */
   getSentence(idSentence) {
-    return this.sentences[idSentence] || "";
+    const sentence = this.sentences[idSentence] || this.sharedSentences[idSentence];
+    if(sentence === undefined) throw new Error("There's no sentence");
+    return  sentence;
   }
 
   /**
