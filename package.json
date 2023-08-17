@@ -4,7 +4,8 @@
   "description": "A pg node wraper to execute sql sentences.",
   "main": "index.js",
   "scripts": {
-    "doc": "jsdoc -c jsdoc.json"
+    "doc": "jsdoc -c jsdoc.json",
+    "test": "jest"
   },
   "keywords": [
     "postgres",
@@ -30,5 +31,8 @@
     "config": "^3.3.9",
     "jsdoc": "^4.0.2",
     "pg": "^8.11.1"
+  },
+  "devDependencies": {
+    "jest": "^29.6.2"
   }
 }
