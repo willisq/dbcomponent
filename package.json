@@ -1,6 +1,6 @@
 {
   "name": "dbcomponent",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A pg node wraper to execute sql sentences.",
   "main": "index.js",
   "scripts": {
